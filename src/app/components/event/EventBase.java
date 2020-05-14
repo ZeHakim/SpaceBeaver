@@ -1,6 +1,7 @@
 package app.components.event;
 
 import java.time.Duration;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 import app.components.event.interfaces.EventI;
@@ -23,7 +24,9 @@ public class EventBase {
 	 * @author hakim
 	 */
 	public void clearEvents(Duration period) {
-		
+		eventBase.forEach(e -> {
+			//if (period.compareTo(LocalTime.now().compareTo(e.getTimeStamp().getTime()))) 
+		});
 	}
 	
 	/**
@@ -51,7 +54,7 @@ public class EventBase {
 	 * @author hakim
 	 */
 	public void addEvent(EventI e) {
-		
+		eventBase.add(e);
 	}
 	
 	/**
@@ -66,7 +69,7 @@ public class EventBase {
 	}
 	
 	/**
-	 * Methode qui ajoute un évenment dans eventBase
+	 * Methode qui vérifie présence d'un évenment dans eventBase
 	 * @param e
 	 * @throws Exception	<i>to do</i>.
 	 * @author hakim
