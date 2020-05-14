@@ -25,6 +25,8 @@ public class EventBase {
 	 */
 	public void clearEvents(Duration period) {
 		eventBase.forEach(e -> {
+			//
+			//
 			//if (period.compareTo(LocalTime.now().compareTo(e.getTimeStamp().getTime()))) 
 		});
 	}
