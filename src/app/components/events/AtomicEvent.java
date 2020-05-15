@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import app.components.interfaces.AtomicEventI;
+import app.interfaces.events.AtomicEventI;
 
 public class AtomicEvent implements AtomicEventI{
 
@@ -52,7 +52,7 @@ public class AtomicEvent implements AtomicEventI{
 	 */
 	@Override
 	public boolean hasProperty(String name) {
-		return property.containsValue(name);
+		return property.containsKey(name);
 	}
 
 	/**
@@ -85,7 +85,6 @@ public class AtomicEvent implements AtomicEventI{
 	 */
 	@Override
 	public Serializable removeProperty(String name) {
-		// TODO Auto-generated method stub
 		return property.remove(name);
 	}
 

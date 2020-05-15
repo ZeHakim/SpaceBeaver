@@ -1,9 +1,11 @@
 package app.components.events;
 
 import java.time.Duration;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import static java.time.temporal.ChronoUnit.MILLIS;
 
-import app.components.interfaces.EventI;
+import app.interfaces.events.EventI;
 
 
 public class EventBase {
@@ -25,11 +27,11 @@ public class EventBase {
 	 * @author hakim
 	 */
 	public void clearEvents(Duration period) {
-		eventBase.forEach(e -> {
-			//
-			//
-			//if (period.compareTo(LocalTime.now().compareTo(e.getTimeStamp().getTime()))) 
-		});
+		for (int i=0; i < eventBase.size(); i++) {
+			if (MILLIS.between(LocalTime.now(), eventBase.get(i).getTimeStamp().getTime()) <= period.toMillis()){
+				eventBase.remove(i);
+			}
+		}
 	}
 	
 	/**

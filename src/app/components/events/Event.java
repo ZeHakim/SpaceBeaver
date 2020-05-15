@@ -2,7 +2,7 @@ package app.components.events;
 
 import java.io.Serializable;
 
-import app.components.interfaces.EventI;
+import app.interfaces.events.EventI;
 
 public class Event implements EventI{
 	

@@ -1,4 +1,4 @@
-package app.components.interfaces;
+package app.interfaces.events;
 import java.io.Serializable;
 
 import app.components.events.TimeStamp;

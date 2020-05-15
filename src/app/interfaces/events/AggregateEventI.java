@@ -1,4 +1,4 @@
-package app.components.interfaces;
+package app.interfaces.events;
 
 import java.util.ArrayList;
 

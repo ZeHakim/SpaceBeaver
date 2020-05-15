@@ -3,8 +3,8 @@ package app.components.events;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import app.components.interfaces.AggregateEventI;
-import app.components.interfaces.EventI;
+import app.interfaces.events.AggregateEventI;
+import app.interfaces.events.EventI;
 
 public class AggregateEvent implements AggregateEventI {
 
@@ -50,10 +50,14 @@ public class AggregateEvent implements AggregateEventI {
 	 * @return boolean
 	 * @throws Exception	<i>to do</i>.
 	 * @author Hakim
+	 * @return 
 	 */
 	@Override
 	public boolean hasProperty(String name) {
-		return correlatedEvents.get(0).hasProperty(name) || correlatedEvents.get(1).hasProperty(name);
+		for (int i=0; i < correlatedEvents.size(); i++) {
+			if (correlatedEvents.get(i).hasProperty(name)) return true;
+		}
+		return false;
 	}
 
 	/**
@@ -64,7 +68,10 @@ public class AggregateEvent implements AggregateEventI {
 	 */
 	@Override
 	public Serializable getProperty(String name) {
-		return correlatedEvents.get(0).getProperty(name);
+		for (int i=0; i < correlatedEvents.size(); i++) {
+			if (correlatedEvents.get(i).hasProperty(name)) return correlatedEvents.get(i).getProperty(name);
+		}
+		return null;
 	}
 
 	/**

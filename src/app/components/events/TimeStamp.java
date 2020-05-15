@@ -3,7 +3,7 @@ package app.components.events;
 import java.io.Serializable;
 import java.time.LocalTime;
 
-public class TimeStamp implements Comparable<Object>, Serializable{
+public class TimeStamp implements Comparable, Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private LocalTime locaTime;
@@ -14,10 +14,14 @@ public class TimeStamp implements Comparable<Object>, Serializable{
 
 	@Override
 	public int compareTo(Object arg0) {
-		// TODO Auto-generated method stub
+		TimeStamp cast = (TimeStamp) arg0;
+		if (cast.equals(locaTime)) return 0;
 		return this.compareTo(arg0);
 	}
 	
+	public int compareTo(TimeStamp arg0) {
+		return this.compareTo(arg0);
+	}
 	
 	/**
 	 * Methode qui renvoie le temps local
@@ -38,5 +42,7 @@ public class TimeStamp implements Comparable<Object>, Serializable{
 	public String getTimestamper() {
 		return locaTime.toString();
 	}
+
+
 
 }
