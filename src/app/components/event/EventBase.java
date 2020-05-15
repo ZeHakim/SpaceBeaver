@@ -11,7 +11,9 @@ public class EventBase {
 	
 	private ArrayList<EventI> eventBase;
 	
-
+	// -------------------------------------------------------------------------
+	// Constructors
+	// -------------------------------------------------------------------------
 	public EventBase() {
 		this.eventBase = new ArrayList<EventI>();
 	}

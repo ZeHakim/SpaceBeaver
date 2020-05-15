@@ -20,13 +20,13 @@ public class Event implements EventI{
 	}
 
 	@Override
-	public boolean hasProperty() {
+	public boolean hasProperty(String name) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public Serializable getProperty() {
+	public Serializable getProperty(String name) {
 		// TODO Auto-generated method stub
 		return null;
 	}
