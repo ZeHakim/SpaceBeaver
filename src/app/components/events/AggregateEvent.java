@@ -1,12 +1,14 @@
-package app.components.event;
+package app.components.events;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import app.components.event.interfaces.AggregateEventI;
-import app.components.event.interfaces.EventI;
+import app.components.interfaces.AggregateEventI;
+import app.components.interfaces.EventI;
 
 public class AggregateEvent implements AggregateEventI {
+
+	private static final long serialVersionUID = 1L;
 	private String uri;
 	private TimeStamp timeStamp;
 	private ArrayList<EventI> correlatedEvents;

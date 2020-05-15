@@ -1,9 +1,9 @@
-package app.components.event.interfaces;
+package app.components.interfaces;
 import java.io.Serializable;
 
-import app.components.event.TimeStamp;
+import app.components.events.TimeStamp;
 
-public interface EventI extends Serializable{
+public interface EventI extends Serializable {
 	
 	
 	/**

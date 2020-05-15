@@ -1,11 +1,12 @@
-package app.components.event;
+package app.components.events;
 
 import java.io.Serializable;
 
-import app.components.event.interfaces.EventI;
+import app.components.interfaces.EventI;
 
 public class Event implements EventI{
 	
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	public String getURI() {
@@ -30,5 +31,4 @@ public class Event implements EventI{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

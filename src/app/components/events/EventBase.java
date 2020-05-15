@@ -1,10 +1,9 @@
-package app.components.event;
+package app.components.events;
 
 import java.time.Duration;
-import java.time.LocalTime;
 import java.util.ArrayList;
 
-import app.components.event.interfaces.EventI;
+import app.components.interfaces.EventI;
 
 
 public class EventBase {

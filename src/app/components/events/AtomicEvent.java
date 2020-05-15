@@ -1,13 +1,14 @@
-package app.components.event;
+package app.components.events;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import app.components.event.interfaces.AtomicEventI;
-import app.components.event.interfaces.EventI;
+import app.components.interfaces.AtomicEventI;
 
 public class AtomicEvent implements AtomicEventI{
+
+	private static final long serialVersionUID = 1L;
 	private String uri;
 	private TimeStamp timeStamp;
 	private Map <String, Serializable> property;
@@ -17,7 +18,7 @@ public class AtomicEvent implements AtomicEventI{
 	// -------------------------------------------------------------------------
 	public AtomicEvent(String uri, TimeStamp time) {
 		this.uri = uri;
-		this.timeStamp = timeStamp;
+		this.timeStamp = time;
 		property = new HashMap<>();
 	}
 	
