@@ -1,8 +1,11 @@
 package app;
+import app.components.CEPBus;
+import app.components.PresenceDetector;
+import fr.sorbonne_u.components.AbstractComponent;
 import fr.sorbonne_u.components.cvm.AbstractCVM;
 
-public class CVM extends AbstractCVM {
 
+public class CVM extends AbstractCVM {
 	public CVM() throws Exception {
 	}
 
@@ -11,9 +14,12 @@ public class CVM extends AbstractCVM {
 	 */
 	@Override
 	public void deploy() throws Exception {
-		
+		AbstractComponent.createComponent(PresenceDetector.class.getCanonicalName(), new Object[] {});
+		AbstractComponent.createComponent(CEPBus.class.getCanonicalName(), new Object[] {});
+
+		super.deploy();
 	}
-	
+
 	public static void main(String[] args) {
 		try {
 			CVM cvm = new CVM();

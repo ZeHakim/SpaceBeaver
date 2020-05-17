@@ -17,10 +17,10 @@ public class AggregateEvent implements AggregateEventI {
 	// -------------------------------------------------------------------------
 	// Constructors
 	// -------------------------------------------------------------------------
-	public AggregateEvent(String uri, ArrayList<EventI> correlatedEvents, TimeStamp timeStamp) {
+	public AggregateEvent(String uri, ArrayList<EventI> correlatedEvents) {
 		this.uri = uri;
 		this.correlatedEvents = correlatedEvents;
-		this.timeStamp = timeStamp;
+		this.timeStamp = new TimeStamp();
 	}
 
 	/**

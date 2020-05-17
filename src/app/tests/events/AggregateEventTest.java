@@ -23,8 +23,8 @@ class AggregateEventTest {
 		TimeStamp ts2 = new TimeStamp();
 		//String uri2 = "Test URI2";
 		
-		AtomicEventI event1 = new AtomicEvent(uri1, ts2);
-		AtomicEventI event2 = new AtomicEvent(uri1, ts2);
+		AtomicEventI event1 = new AtomicEvent(uri1);
+		AtomicEventI event2 = new AtomicEvent(uri1);
 		
 		String uri = "Test URI";
 		TimeStamp ts = new TimeStamp();
@@ -32,7 +32,7 @@ class AggregateEventTest {
 		liste.add(event1);
 		liste.add(event2);
 		
-		AggregateEventI a = new AggregateEvent(uri, liste, ts);
+		AggregateEventI a = new AggregateEvent(uri, liste);
 		
 		assertEquals(a.getURI(), uri);
 	}
@@ -45,8 +45,8 @@ class AggregateEventTest {
 		TimeStamp ts2 = new TimeStamp();
 		//String uri2 = "Test URI2";
 		
-		AtomicEventI event1 = new AtomicEvent(uri1, ts2);
-		AtomicEventI event2 = new AtomicEvent(uri1, ts2);
+		AtomicEventI event1 = new AtomicEvent(uri1);
+		AtomicEventI event2 = new AtomicEvent(uri1);
 		
 		String uri = "Test URI";
 		TimeStamp ts = new TimeStamp();
@@ -54,9 +54,9 @@ class AggregateEventTest {
 		liste.add(event1);
 		liste.add(event2);
 		
-		AggregateEventI a = new AggregateEvent(uri, liste, ts);
+		AggregateEventI a = new AggregateEvent(uri, liste);
 		
-		assertEquals(a.getTimeStamp(), ts);
+		assertEquals(a.getTimeStamp().getClass(),TimeStamp.class);
 	}
 
 	@Test
@@ -67,8 +67,8 @@ class AggregateEventTest {
 		TimeStamp ts2 = new TimeStamp();
 		//String uri2 = "Test URI2";
 		
-		AtomicEventI event1 = new AtomicEvent(uri1, ts2);
-		AtomicEventI event2 = new AtomicEvent(uri1, ts2);
+		AtomicEventI event1 = new AtomicEvent(uri1);
+		AtomicEventI event2 = new AtomicEvent(uri1);
 		event1.putProperty("test1", "test1");
 		event1.putProperty("test2", "test2");
 		
@@ -78,7 +78,7 @@ class AggregateEventTest {
 		liste.add(event1);
 		liste.add(event2);
 		
-		AggregateEventI a = new AggregateEvent(uri, liste, ts);
+		AggregateEventI a = new AggregateEvent(uri, liste);
 		
 		assertTrue(a.hasProperty("test1"));
 		assertTrue(a.hasProperty("test2"));
@@ -93,8 +93,8 @@ class AggregateEventTest {
 		TimeStamp ts2 = new TimeStamp();
 		//String uri2 = "Test URI2";
 		
-		AtomicEventI event1 = new AtomicEvent(uri1, ts2);
-		AtomicEventI event2 = new AtomicEvent(uri1, ts2);
+		AtomicEventI event1 = new AtomicEvent(uri1);
+		AtomicEventI event2 = new AtomicEvent(uri1);
 		event1.putProperty("test1", "test1");
 		event1.putProperty("test2", "test2");
 		
@@ -104,7 +104,7 @@ class AggregateEventTest {
 		liste.add(event1);
 		liste.add(event2);
 		
-		AggregateEventI a = new AggregateEvent(uri, liste, ts);
+		AggregateEventI a = new AggregateEvent(uri, liste);
 		
 		assertEquals(a.getProperty("test1"), "test1");
 		assertEquals(a.getProperty("test2"), "test2");
@@ -119,8 +119,8 @@ class AggregateEventTest {
 		TimeStamp ts2 = new TimeStamp();
 		//String uri2 = "Test URI2";
 		
-		AtomicEventI event1 = new AtomicEvent(uri1, ts2);
-		AtomicEventI event2 = new AtomicEvent(uri1, ts2);
+		AtomicEventI event1 = new AtomicEvent(uri1);
+		AtomicEventI event2 = new AtomicEvent(uri1);
 		event1.putProperty("test1", "test1");
 		event1.putProperty("test2", "test2");
 		
@@ -130,7 +130,7 @@ class AggregateEventTest {
 		liste.add(event1);
 		liste.add(event2);
 		
-		AggregateEventI a = new AggregateEvent(uri, liste, ts);
+		AggregateEventI a = new AggregateEvent(uri, liste);
 		
 		assertEquals(a.getCorrelatedEvents(), liste);
 	}

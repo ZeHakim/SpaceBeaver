@@ -3,10 +3,11 @@ package app.components.rules;
 import java.util.ArrayList;
 import app.interfaces.rules.RuleI;
 import app.components.events.EventBase;
+import app.interfaces.events.EventI;
 
 /**
  * 
- * classe comportant une liste de règles et deux méthode qu'on peut exécuter soit pour trouver une regle qui fonctionne 
+ * classe comportant une liste de rï¿½gles et deux mï¿½thode qu'on peut exï¿½cuter soit pour trouver une regle qui fonctionne 
  * soit pour trouver toutes les regles qui fonctionnent 
  *
  */

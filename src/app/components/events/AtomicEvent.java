@@ -16,9 +16,9 @@ public class AtomicEvent implements AtomicEventI{
 	// -------------------------------------------------------------------------
 	// Constructors
 	// -------------------------------------------------------------------------
-	public AtomicEvent(String uri, TimeStamp time) {
+	public AtomicEvent(String uri) {
 		this.uri = uri;
-		this.timeStamp = time;
+		this.timeStamp = new TimeStamp();
 		property = new HashMap<>();
 	}
 	

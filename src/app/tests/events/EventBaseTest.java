@@ -25,8 +25,8 @@ class EventBaseTest {
 		//String uri2 = "Test URI2";
 		
 		System.out.println(ts1.compareTo(ts2));
-		AtomicEventI event1 = new AtomicEvent(uri1, ts2);
-		AtomicEventI event2 = new AtomicEvent(uri1, ts2);
+		AtomicEventI event1 = new AtomicEvent(uri1);
+		AtomicEventI event2 = new AtomicEvent(uri1);
 		event1.putProperty("test1", "test1");
 		event1.putProperty("test2", "test2");
 		
@@ -50,8 +50,8 @@ class EventBaseTest {
 		TimeStamp ts2 = new TimeStamp();
 		//String uri2 = "Test URI2";
 		
-		AtomicEventI event1 = new AtomicEvent(uri1, ts2);
-		AtomicEventI event2 = new AtomicEvent(uri1, ts2);
+		AtomicEventI event1 = new AtomicEvent(uri1);
+		AtomicEventI event2 = new AtomicEvent(uri1);
 		event1.putProperty("test1", "test1");
 		event1.putProperty("test2", "test2");
 		
@@ -75,8 +75,8 @@ class EventBaseTest {
 		TimeStamp ts2 = new TimeStamp();
 		//String uri2 = "Test URI2";
 		
-		AtomicEventI event1 = new AtomicEvent(uri1, ts2);
-		AtomicEventI event2 = new AtomicEvent(uri1, ts2);
+		AtomicEventI event1 = new AtomicEvent(uri1);
+		AtomicEventI event2 = new AtomicEvent(uri1);
 		event1.putProperty("test1", "test1");
 		event1.putProperty("test2", "test2");
 		
@@ -101,8 +101,8 @@ class EventBaseTest {
 		TimeStamp ts2 = new TimeStamp();
 		//String uri2 = "Test URI2";
 		
-		AtomicEventI event1 = new AtomicEvent(uri1, ts2);
-		AtomicEventI event2 = new AtomicEvent(uri1, ts2);
+		AtomicEventI event1 = new AtomicEvent(uri1);
+		AtomicEventI event2 = new AtomicEvent(uri1);
 		event1.putProperty("test1", "test1");
 		event1.putProperty("test2", "test2");
 		
@@ -129,8 +129,8 @@ class EventBaseTest {
 		TimeStamp ts2 = new TimeStamp();
 		//String uri2 = "Test URI2";
 		
-		AtomicEventI event1 = new AtomicEvent(uri1, ts2);
-		AtomicEventI event2 = new AtomicEvent(uri1, ts2);
+		AtomicEventI event1 = new AtomicEvent(uri1);
+		AtomicEventI event2 = new AtomicEvent(uri1);
 		event1.putProperty("test1", "test1");
 		event1.putProperty("test2", "test2");
 		

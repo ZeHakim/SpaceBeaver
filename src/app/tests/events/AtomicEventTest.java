@@ -17,7 +17,7 @@ class AtomicEventTest {
 		TimeStamp ts = new TimeStamp();
 		String uri = "Test URI";
 		
-		AtomicEventI event = new AtomicEvent(uri, ts);
+		AtomicEventI event = new AtomicEvent(uri);
 		
 		assertEquals(event.getURI(), uri);
 	}
@@ -27,9 +27,10 @@ class AtomicEventTest {
 		TimeStamp ts = new TimeStamp();
 		String uri = "Test URI";
 		
-		AtomicEventI event = new AtomicEvent(uri, ts);
+		AtomicEventI event = new AtomicEvent(uri);
 		
-		assertEquals(event.getTimeStamp(), ts);
+		assertEquals(event.getTimeStamp().getClass(),TimeStamp.class);
+		
 	}
 
 	@Test
@@ -37,7 +38,7 @@ class AtomicEventTest {
 		TimeStamp ts = new TimeStamp();
 		String uri = "Test URI";
 		
-		AtomicEventI event = new AtomicEvent(uri, ts);
+		AtomicEventI event = new AtomicEvent(uri);
 		
 		String name = "test1";
 		Serializable value = "value";
@@ -52,7 +53,7 @@ class AtomicEventTest {
 		TimeStamp ts = new TimeStamp();
 		String uri = "Test URI";
 		
-		AtomicEventI event = new AtomicEvent(uri, ts);
+		AtomicEventI event = new AtomicEvent(uri);
 		
 		String name = "test1";
 		Serializable value = "value";
@@ -67,7 +68,7 @@ class AtomicEventTest {
 		TimeStamp ts = new TimeStamp();
 		String uri = "Test URI";
 		
-		AtomicEventI event = new AtomicEvent(uri, ts);
+		AtomicEventI event = new AtomicEvent(uri);
 		
 		String name = "test1";
 		Serializable value = "value";
@@ -81,7 +82,7 @@ class AtomicEventTest {
 		TimeStamp ts = new TimeStamp();
 		String uri = "Test URI";
 		
-		AtomicEventI event = new AtomicEvent(uri, ts);
+		AtomicEventI event = new AtomicEvent(uri);
 		
 		String name = "test1";
 		Serializable value = "value";
