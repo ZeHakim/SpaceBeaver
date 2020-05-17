@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import app.interfaces.events.EventI;
 import app.components.events.EventBase;
 
-import app.components.events.EventBase;
-import app.interfaces.events.EventI;
-
 /**
  *Interface des r�gles de de corr�lation des �venements. executeOn permet d'executer 
  *Les m�thodes dans l'odre pour tester une base d'�v�nement avec une r�gle
