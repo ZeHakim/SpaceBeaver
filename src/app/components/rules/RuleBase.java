@@ -1,9 +1,15 @@
-package rules;
+package app.components.rules;
 
 import java.util.ArrayList;
 import app.interfaces.rules.RuleI;
-import app.interfaces.events.EventI;
+import app.components.events.EventBase;
 
+/**
+ * 
+ * classe comportant une liste de règles et deux méthode qu'on peut exécuter soit pour trouver une regle qui fonctionne 
+ * soit pour trouver toutes les regles qui fonctionnent 
+ *
+ */
 public class RuleBase {
 	private ArrayList<RuleI> base = new ArrayList<RuleI>();
 	

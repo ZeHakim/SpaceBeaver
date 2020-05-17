@@ -1,8 +1,8 @@
 package app.components;
 
-import app.interfaces.CEPBusManagementCI;
-import app.interfaces.EventEmissionCI;
-import app.interfaces.EventReceptionCI;
+import app.interfaces.bus.CEPBusManagementCI;
+import app.interfaces.bus.EventEmissionCI;
+import app.interfaces.bus.EventReceptionCI;
 import fr.sorbonne_u.components.AbstractComponent;
 import fr.sorbonne_u.components.annotations.OfferedInterfaces;
 import fr.sorbonne_u.components.annotations.RequiredInterfaces;

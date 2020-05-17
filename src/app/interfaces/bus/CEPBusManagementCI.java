@@ -1,4 +1,4 @@
-package app.interfaces;
+package app.interfaces.bus;
 
 import fr.sorbonne_u.components.interfaces.OfferedI;
 

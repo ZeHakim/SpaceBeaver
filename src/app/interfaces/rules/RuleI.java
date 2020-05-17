@@ -1,7 +1,15 @@
 package app.interfaces.rules;
 
 import java.util.ArrayList;
+import app.interfaces.events.EventI;
+import app.components.events.EventBase;
 
+/**
+ *Interface des règles de de corrélation des évenements. executeOn permet d'executer 
+ *Les méthodes dans l'odre pour tester une base d'événement avec une règle
+ * @author Gabriel Bouchez
+ *
+ */
 public interface RuleI {
 	//public RuleI clone();
 	

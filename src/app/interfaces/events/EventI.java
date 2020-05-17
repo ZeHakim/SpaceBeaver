@@ -1,6 +1,5 @@
 package app.interfaces.events;
 import java.io.Serializable;
-
 import app.components.events.TimeStamp;
 
 public interface EventI extends Serializable {
