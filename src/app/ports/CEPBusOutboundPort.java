@@ -2,6 +2,7 @@ package app.ports;
 
 import app.components.CEPBus;
 import app.interfaces.bus.CEPBusManagementCI;
+import app.interfaces.bus.EventEmissionCI;
 import app.interfaces.bus.EventReceptionCI;
 import app.interfaces.events.EventI;
 import fr.sorbonne_u.components.ComponentI;
@@ -9,7 +10,7 @@ import fr.sorbonne_u.components.ports.AbstractInboundPort;
 import fr.sorbonne_u.components.ports.AbstractOutboundPort;
 
 
-public class CEPBusOutboundPort extends AbstractOutboundPort implements CEPBusManagementCI, EventReceptionCI{
+public class CEPBusOutboundPort extends AbstractOutboundPort implements CEPBusManagementCI, EventEmissionCI{
 	
 	/**
 	 * 
@@ -17,43 +18,35 @@ public class CEPBusOutboundPort extends AbstractOutboundPort implements CEPBusMa
 	private static final long serialVersionUID = 1L;
 
 	public CEPBusOutboundPort(ComponentI owner) throws Exception {
-		super(EventReceptionCI.class, owner);
-		System.out.println("Constrructeur 1");
-		assert owner instanceof CEPBus;
+		super(EventEmissionCI.class, owner);
 	}
 
 	public CEPBusOutboundPort(String uri, ComponentI owner) throws Exception {
-		super(uri, EventReceptionCI.class, owner);
-		System.out.println("Constrructeur 2");
-		assert owner instanceof CEPBus;
+		super(uri, EventEmissionCI.class, owner);
 	}
 
 	protected CEPBusOutboundPort(Class<?> implementedInterface, ComponentI owner)
 			throws Exception {
 		super(implementedInterface, owner);
-		System.out.println("Constrructeur 3");
-		assert owner instanceof CEPBus;
 	}
 
 	protected CEPBusOutboundPort(String uri, Class<?> implementedInterface, ComponentI owner)
 			throws Exception {
 		super(uri, implementedInterface, owner);
-		System.out.println("Constrructeur 4");
-		assert owner instanceof CEPBus;
 	}
 	
-
+	
 	@Override
 	public void sendEvent(String emitterURI, String destinationURI, EventI e) throws Exception {
-		((EventReceptionCI) this.connector).sendEvent(emitterURI, destinationURI, e);
+		((EventEmissionCI) this.connector).sendEvent(emitterURI, destinationURI, e);
 	}
 
 	@Override
-	public void multisendEvent(String emitterURI, String[] destinatioURI, EventI e) throws Exception {
-		System.out.println("send message dans busOutPort");
-		((EventReceptionCI) this.connector).multisendEvent(emitterURI, destinatioURI, e);
+	public void multiSendEvent(String emitterURI, String[] destinationURIs, EventI e) throws Exception {
+		((EventEmissionCI) this.connector).multiSendEvent(emitterURI, destinationURIs, e);
 		
 	}
+	
 
 	@Override
 	public String getEventReceptionInboundPortURI(String uri) throws Exception {
@@ -90,5 +83,6 @@ public class CEPBusOutboundPort extends AbstractOutboundPort implements CEPBusMa
 		// TODO Auto-generated method stub
 		
 	}
+	
 
 }

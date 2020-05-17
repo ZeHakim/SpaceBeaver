@@ -9,9 +9,8 @@ import fr.sorbonne_u.components.connectors.AbstractConnector;
 public class CEPBusConnector extends AbstractConnector implements CEPBusManagementCI, EventEmissionCI, EventReceptionCI {
 
 	@Override
-	public void sendEvent(String emitterURI, String destinationURI, EventI e) throws Exception {
-		System.out.println("dans la bus connector");
-		((EventReceptionCI)this.offering).sendEvent(emitterURI, destinationURI, e);
+	public void sendEvent(String emitterURI, String destinationURI, EventI e) throws Exception{
+		((EventEmissionCI)this.offering).sendEvent(emitterURI, destinationURI, e);
 	}
 
 	@Override
@@ -21,7 +20,7 @@ public class CEPBusConnector extends AbstractConnector implements CEPBusManageme
 	}
 
 	@Override
-	public void receiveEvent(String emitterURI, EventI e) throws Exception {
+	public void receiveEvent(String emitterURI, EventI e)  {
 		// TODO Auto-generated method stub
 		
 	}
@@ -58,6 +57,12 @@ public class CEPBusConnector extends AbstractConnector implements CEPBusManageme
 
 	@Override
 	public void unregisterCommandExecutor(String uri) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void multiSendEvent(String emitterURI, String[] destinationURIs, EventI e) {
 		// TODO Auto-generated method stub
 		
 	}

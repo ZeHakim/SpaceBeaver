@@ -36,6 +36,12 @@ public class CEPBus extends AbstractComponent {
 		this.pdo = new PresenceDetectorOutboundPort(this);
 		this.pdo.publishPort();
 	}
+	
+	@Override
+	public void execute() throws Exception {
+		System.out.println("ds,kldfks ");
+		System.out.println("ds,kldfks "+pdo.getClientPortURI());
+	}
 
 	protected CEPBusInboundPort createPort() throws Exception {
 		return new CEPBusInboundPort(INBOUND_PORT_URI, this);
@@ -44,5 +50,7 @@ public class CEPBus extends AbstractComponent {
 	public void sendEvent(String emitterURI, String destinationURI, EventI e) {
 		System.out.println("Event recu !");
 	}
+	
+	
 
 }

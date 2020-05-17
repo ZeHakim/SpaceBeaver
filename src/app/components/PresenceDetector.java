@@ -81,7 +81,7 @@ public class PresenceDetector extends AbstractComponent  {
 		return new PresenceDetectorInboundPort(INBOUND_PORT_URI, this);
 	}
 	
-	public void emitEventDetector() throws Exception {
+	public void emitEventDetector() throws Exception { 
 		count++;
 		AtomicEventI event = new AtomicEvent("Detection presence "+count);
 		event.putProperty("room", room);

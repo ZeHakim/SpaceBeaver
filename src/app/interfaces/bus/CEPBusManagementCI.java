@@ -17,15 +17,5 @@ public interface CEPBusManagementCI extends OfferedI, RequiredI {
 	
 	public void unregisterCommandExecutor(String uri) throws Exception ;
 
-	public String getEventReceptionInboundPortURI(String uri);
-	
-	public void registerEventReceptor(String uri, String inboundPortURI);
-	
-	public void unregisterEventReceptor(String uri);
-	
-	public void registerCommandExecutor(String uri, String inboundPortURI);
-	
-	public String getExecutorInboundPortURI(String executorURI);
-	
-	public void unregisterCommandExecutor(String uri);
+
 }
