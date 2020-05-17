@@ -17,11 +17,11 @@ class AggregateEventTest {
 
 	@Test
 	void testGetURI() {
-		TimeStamp ts1 = new TimeStamp();
+		//TimeStamp ts1 = new TimeStamp();
 		String uri1 = "Test URI1";
 		
 		TimeStamp ts2 = new TimeStamp();
-		String uri2 = "Test URI2";
+		//String uri2 = "Test URI2";
 		
 		AtomicEventI event1 = new AtomicEvent(uri1, ts2);
 		AtomicEventI event2 = new AtomicEvent(uri1, ts2);
@@ -39,11 +39,11 @@ class AggregateEventTest {
 
 	@Test
 	void testGetTimeStamp() {
-		TimeStamp ts1 = new TimeStamp();
+		//TimeStamp ts1 = new TimeStamp();
 		String uri1 = "Test URI1";
 		
 		TimeStamp ts2 = new TimeStamp();
-		String uri2 = "Test URI2";
+		//String uri2 = "Test URI2";
 		
 		AtomicEventI event1 = new AtomicEvent(uri1, ts2);
 		AtomicEventI event2 = new AtomicEvent(uri1, ts2);
@@ -61,11 +61,11 @@ class AggregateEventTest {
 
 	@Test
 	void testHasProperty() {
-		TimeStamp ts1 = new TimeStamp();
+		//TimeStamp ts1 = new TimeStamp();
 		String uri1 = "Test URI1";
 		
 		TimeStamp ts2 = new TimeStamp();
-		String uri2 = "Test URI2";
+		//String uri2 = "Test URI2";
 		
 		AtomicEventI event1 = new AtomicEvent(uri1, ts2);
 		AtomicEventI event2 = new AtomicEvent(uri1, ts2);
@@ -87,11 +87,11 @@ class AggregateEventTest {
 
 	@Test
 	void testGetProperty() {
-		TimeStamp ts1 = new TimeStamp();
+		//TimeStamp ts1 = new TimeStamp();
 		String uri1 = "Test URI1";
 		
 		TimeStamp ts2 = new TimeStamp();
-		String uri2 = "Test URI2";
+		//String uri2 = "Test URI2";
 		
 		AtomicEventI event1 = new AtomicEvent(uri1, ts2);
 		AtomicEventI event2 = new AtomicEvent(uri1, ts2);
@@ -113,11 +113,11 @@ class AggregateEventTest {
 
 	@Test
 	void testGetCorrelatedEvents() {
-		TimeStamp ts1 = new TimeStamp();
+		//TimeStamp ts1 = new TimeStamp();
 		String uri1 = "Test URI1";
 		
 		TimeStamp ts2 = new TimeStamp();
-		String uri2 = "Test URI2";
+		//String uri2 = "Test URI2";
 		
 		AtomicEventI event1 = new AtomicEvent(uri1, ts2);
 		AtomicEventI event2 = new AtomicEvent(uri1, ts2);

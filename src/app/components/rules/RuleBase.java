@@ -28,7 +28,7 @@ public class RuleBase {
 	 */
 	public boolean fireFirstOn (EventBase events) {
 		for (RuleI oneRule : base) {
-			if (oneRule.executeOn(events)){
+			if (oneRule.executeOn(events)){ // TODO erreur à corriger
 				return true;
 			}
 		}

@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import app.interfaces.events.EventI;
 import app.components.events.EventBase;
 
+import app.components.events.EventBase;
+import app.interfaces.events.EventI;
+
 /**
- *Interface des règles de de corrélation des évenements. executeOn permet d'executer 
- *Les méthodes dans l'odre pour tester une base d'événement avec une règle
+ *Interface des rï¿½gles de de corrï¿½lation des ï¿½venements. executeOn permet d'executer 
+ *Les mï¿½thodes dans l'odre pour tester une base d'ï¿½vï¿½nement avec une rï¿½gle
  * @author Gabriel Bouchez
  *
  */

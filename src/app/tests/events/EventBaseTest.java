@@ -2,17 +2,12 @@ package app.tests.events;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-
 import org.junit.jupiter.api.Test;
 
-import app.components.events.AggregateEvent;
 import app.components.events.AtomicEvent;
 import app.components.events.EventBase;
 import app.components.events.TimeStamp;
-import app.interfaces.events.AggregateEventI;
 import app.interfaces.events.AtomicEventI;
-import app.interfaces.events.EventI;
 
 class EventBaseTest {
 
@@ -27,7 +22,7 @@ class EventBaseTest {
 		String uri1 = "Test URI1";
 		
 		TimeStamp ts2 = new TimeStamp();
-		String uri2 = "Test URI2";
+		//String uri2 = "Test URI2";
 		
 		System.out.println(ts1.compareTo(ts2));
 		AtomicEventI event1 = new AtomicEvent(uri1, ts2);
@@ -35,8 +30,8 @@ class EventBaseTest {
 		event1.putProperty("test1", "test1");
 		event1.putProperty("test2", "test2");
 		
-		String uri = "Test URI";
-		TimeStamp ts = new TimeStamp();
+		//String uri = "Test URI";
+		//TimeStamp ts = new TimeStamp();
 		
 		EventBase base = new EventBase();
 		
@@ -49,19 +44,19 @@ class EventBaseTest {
 
 	@Test
 	void testGetEvent() {
-		TimeStamp ts1 = new TimeStamp();
+		//TimeStamp ts1 = new TimeStamp();
 		String uri1 = "Test URI1";
 		
 		TimeStamp ts2 = new TimeStamp();
-		String uri2 = "Test URI2";
+		//String uri2 = "Test URI2";
 		
 		AtomicEventI event1 = new AtomicEvent(uri1, ts2);
 		AtomicEventI event2 = new AtomicEvent(uri1, ts2);
 		event1.putProperty("test1", "test1");
 		event1.putProperty("test2", "test2");
 		
-		String uri = "Test URI";
-		TimeStamp ts = new TimeStamp();
+		//String uri = "Test URI";
+		//TimeStamp ts = new TimeStamp();
 		
 		EventBase base = new EventBase();
 		
@@ -74,19 +69,19 @@ class EventBaseTest {
 
 	@Test
 	void testAddEvent() {
-		TimeStamp ts1 = new TimeStamp();
+		//TimeStamp ts1 = new TimeStamp();
 		String uri1 = "Test URI1";
 		
 		TimeStamp ts2 = new TimeStamp();
-		String uri2 = "Test URI2";
+		//String uri2 = "Test URI2";
 		
 		AtomicEventI event1 = new AtomicEvent(uri1, ts2);
 		AtomicEventI event2 = new AtomicEvent(uri1, ts2);
 		event1.putProperty("test1", "test1");
 		event1.putProperty("test2", "test2");
 		
-		String uri = "Test URI";
-		TimeStamp ts = new TimeStamp();
+		//String uri = "Test URI";
+		//TimeStamp ts = new TimeStamp();
 		
 		EventBase base = new EventBase();
 		
@@ -100,19 +95,19 @@ class EventBaseTest {
 
 	@Test
 	void testRemoveEvent() {
-		TimeStamp ts1 = new TimeStamp();
+		//TimeStamp ts1 = new TimeStamp();
 		String uri1 = "Test URI1";
 		
 		TimeStamp ts2 = new TimeStamp();
-		String uri2 = "Test URI2";
+		//String uri2 = "Test URI2";
 		
 		AtomicEventI event1 = new AtomicEvent(uri1, ts2);
 		AtomicEventI event2 = new AtomicEvent(uri1, ts2);
 		event1.putProperty("test1", "test1");
 		event1.putProperty("test2", "test2");
 		
-		String uri = "Test URI";
-		TimeStamp ts = new TimeStamp();
+		//String uri = "Test URI";
+		//TimeStamp ts = new TimeStamp();
 		
 		EventBase base = new EventBase();
 		
@@ -128,19 +123,19 @@ class EventBaseTest {
 
 	@Test
 	void testAppearsIn() {
-		TimeStamp ts1 = new TimeStamp();
+		//TimeStamp ts1 = new TimeStamp();
 		String uri1 = "Test URI1";
 		
 		TimeStamp ts2 = new TimeStamp();
-		String uri2 = "Test URI2";
+		//String uri2 = "Test URI2";
 		
 		AtomicEventI event1 = new AtomicEvent(uri1, ts2);
 		AtomicEventI event2 = new AtomicEvent(uri1, ts2);
 		event1.putProperty("test1", "test1");
 		event1.putProperty("test2", "test2");
 		
-		String uri = "Test URI";
-		TimeStamp ts = new TimeStamp();
+		//String uri = "Test URI";
+		//TimeStamp ts = new TimeStamp();
 		
 		EventBase base = new EventBase();
 		

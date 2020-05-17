@@ -2,12 +2,13 @@ package app.components.rules;
 
 import app.interfaces.rules.RuleI;
 import app.interfaces.rules.EventMatcherI;
+import app.components.events.EventBase;
 import app.interfaces.events.EventI;
 import java.util.ArrayList;
 import app.components.events.EventBase;
 
 /**
- * Classe régle de l'éclairage d'une salle, renvoit true si quelqu'un se trouve dans la piece et false sinon
+ * Classe rï¿½gle de l'ï¿½clairage d'une salle, renvoit true si quelqu'un se trouve dans la piece et false sinon
  * @author Gabriel Bouchez
  *
  */
@@ -23,24 +24,24 @@ public class RuleEclairage implements RuleI {
 	}
 
 	@Override
-	public EventI match (EventMatcherI matcher) {
+	public EventI match(EventMatcherI matcher) {
 		EventI res = null; 
 		for (int i=0; i<events.numberOfEvents(); i++) {
 			EventI nextEvent = events.getEvent(i);
 			if (matcher.match(nextEvent)) {
-				if ((res!=null)  && (res.getTimeStamp().compareTo(nextEvent.getTimeStamp()) < 0) ) {
+				if () ((res!=null)  && (res.getTimeStamp().compareTo(nextEvent.getTimeStamp()) < 0) ) || (res==null) ){
 					res = nextEvent;
 				}
 			}
 		}
 		return res;
 	}
-	
+
 	@Override
 	public ArrayList<EventI> trigger() {
 		EventI presence = this.match(MATCHER_PRESENCE_DETECTION) ;
 		if ( presence!=null) {
-			//il y a une présence 
+			//il y a une prï¿½sence 
 			ArrayList<EventI> res = new ArrayList<EventI>() ;
 			res.add(presence) ;
 			return res ;
@@ -49,33 +50,31 @@ public class RuleEclairage implements RuleI {
 			return null;
 		}
 	}
-	
+
 	@Override
 	public void actions(ArrayList<EventI> triggerringEvents) {
-		//dans le comparateur: si faux depuis plus de 10 sec --> éteindre 
-		//TODO: appelle les interrupteurs d’éclairage de la pièce pour éteindre les lumières.
+		//dans le corrÃ©lateur: si faux depuis plus de 10 sec --> ï¿½teindre 
+		//TODO: appelle les interrupteurs dï¿½ï¿½clairage de la piï¿½ce pour ï¿½teindre les lumiï¿½res.
 		//emit the order
 		System.out.println("there isnt anyone , maybe switch off the light ");
 	}
-	
+
 	@Override
 	public void effects(ArrayList<EventI> triggerringEvents) {
 		events.removeEvent(triggerringEvents.get(0)) ;
 	}
-	
+
 	@Override
-	public boolean executeOn (EventBase base) {
-		events=base;
-		ArrayList<EventI> eventsTeste =  trigger();
+	public boolean executeOn(EventBase base) {
+		events = base;
+		ArrayList<EventI> eventsTeste = trigger();
 		if (eventsTeste != null) {
 			actions(eventsTeste);
 			effects(eventsTeste);
 			return true;
-		}else {
+		} else {
 			return false;
 		}
-		
-	}
 
-	
+	}
 }

@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import app.components.events.AtomicEvent;
 import app.components.events.TimeStamp;
 import app.interfaces.events.AtomicEventI;
-import app.interfaces.events.EventI;
 
 class AtomicEventTest {
 	
