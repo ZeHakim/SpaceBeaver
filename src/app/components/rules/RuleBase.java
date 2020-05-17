@@ -1,8 +1,8 @@
-package rules;
+package app.components.rules;
 
 import java.util.ArrayList;
 import app.interfaces.rules.RuleI;
-import app.interfaces.events.EventI;
+import app.components.events.EventBase;
 
 public class RuleBase {
 	private ArrayList<RuleI> base = new ArrayList<RuleI>();
@@ -22,7 +22,7 @@ public class RuleBase {
 	 */
 	public boolean fireFirstOn (EventBase events) {
 		for (RuleI oneRule : base) {
-			if (oneRule.executeOn(events)){
+			if (oneRule.executeOn(events)){ // TODO erreur à corriger
 				return true;
 			}
 		}

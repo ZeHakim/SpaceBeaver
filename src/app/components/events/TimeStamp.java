@@ -3,7 +3,7 @@ package app.components.events;
 import java.io.Serializable;
 import java.time.LocalTime;
 
-public class TimeStamp implements Comparable, Serializable{
+public class TimeStamp implements Comparable<Object>, Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private LocalTime locaTime;

@@ -2,6 +2,9 @@ package app.interfaces.rules;
 
 import java.util.ArrayList;
 
+import app.components.events.EventBase;
+import app.interfaces.events.EventI;
+
 public interface RuleI {
 	//public RuleI clone();
 	
