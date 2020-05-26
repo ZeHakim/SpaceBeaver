@@ -6,6 +6,7 @@ import app.interfaces.bus.EventReceptionCI;
 import app.interfaces.events.EventI;
 import app.ports.CEPBusInboundPort;
 import app.ports.CEPBusOutboundPort;
+import app.ports.EventReceptionInboundPort;
 import app.ports.PresenceDetectorInboundPort;
 import app.ports.PresenceDetectorOutboundPort;
 import fr.sorbonne_u.components.AbstractComponent;
@@ -19,10 +20,11 @@ public class CEPBus extends AbstractComponent {
 	
 	public static final String INBOUND_PORT_URI = "busiURI";
 	protected CEPBusInboundPort busi;
-	protected PresenceDetectorOutboundPort pdo;
+	protected EventReceptionInboundPort erbp;
 
-	protected CEPBus() {
+	protected CEPBus() throws Exception {
 		super(1, 0);
+		this.initialise();
 	}
 	
 	protected CEPBus(String reflectionInboundPortURI) throws Exception {
@@ -32,15 +34,15 @@ public class CEPBus extends AbstractComponent {
 
 	protected void initialise() throws Exception {
 		this.busi = this.createPort();
-		this.busi.publishPort();
-		this.pdo = new PresenceDetectorOutboundPort(this);
-		this.pdo.publishPort();
+		//this.busi.publishPort();
+		this.erbp = new EventReceptionInboundPort(this);
+		//this.erbp.publishPort();
 	}
 	
 	@Override
 	public void execute() throws Exception {
-		System.out.println("ds,kldfks ");
-		System.out.println("ds,kldfks "+pdo.getClientPortURI());
+		System.out.println("gggggg");
+		System.out.println("eeeeeeee "+erbp.getPortURI());
 	}
 
 	protected CEPBusInboundPort createPort() throws Exception {

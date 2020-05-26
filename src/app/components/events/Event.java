@@ -1,23 +1,34 @@
 package app.components.events;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import app.interfaces.events.EventI;
 
-public class Event implements EventI{
+public abstract class Event implements EventI{
 	
 	private static final long serialVersionUID = 1L;
-
+	private String uri;
+	private TimeStamp timeStamp;
+	private ArrayList<EventI> correlatedEvents;
+	
+	
+	public Event(String uri) {
+		this.uri = uri;
+		this.timeStamp = new TimeStamp();
+	}
+	
 	@Override
 	public String getURI() {
 		// TODO Auto-generated method stub
-		return null;
+		return uri;
 	}
 
 	@Override
 	public TimeStamp getTimeStamp() {
 		// TODO Auto-generated method stub
-		return null;
+		return timeStamp;
 	}
 
 	@Override

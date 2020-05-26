@@ -8,7 +8,7 @@ import fr.sorbonne_u.components.ComponentI;
 import fr.sorbonne_u.components.ports.AbstractInboundPort;
 
 
-public class CEPBusInboundPort extends AbstractInboundPort implements CEPBusManagementCI, EventEmissionCI{
+public class CEPBusInboundPort extends AbstractInboundPort implements CEPBusManagementCI{
 	
 	/**
 	 * 
@@ -37,13 +37,6 @@ public class CEPBusInboundPort extends AbstractInboundPort implements CEPBusMana
 		assert owner instanceof CEPBus;
 	}
 
-	
-	
-	@Override
-	public void receiveEvent(String emitterURI, EventI e) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public String getEventReceptionInboundPortURI(String uri) throws Exception {
@@ -80,23 +73,4 @@ public class CEPBusInboundPort extends AbstractInboundPort implements CEPBusMana
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void sendEvent(String emitterURI, String destinationURI, EventI e) throws Exception {
-		this.getOwner().runTask(o -> {
-			try {
-				((CEPBus) o).sendEvent(emitterURI, destinationURI, e);
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
-		});
-		
-	}
-
-	@Override
-	public void multiSendEvent(String emitterURI, String[] destinationURIs, EventI e) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

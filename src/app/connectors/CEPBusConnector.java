@@ -6,24 +6,7 @@ import app.interfaces.bus.EventReceptionCI;
 import app.interfaces.events.EventI;
 import fr.sorbonne_u.components.connectors.AbstractConnector;
 
-public class CEPBusConnector extends AbstractConnector implements CEPBusManagementCI, EventEmissionCI, EventReceptionCI {
-
-	@Override
-	public void sendEvent(String emitterURI, String destinationURI, EventI e) throws Exception{
-		((EventEmissionCI)this.offering).sendEvent(emitterURI, destinationURI, e);
-	}
-
-	@Override
-	public void multisendEvent(String emitterURI, String[] destinatioURI, EventI e) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void receiveEvent(String emitterURI, EventI e)  {
-		// TODO Auto-generated method stub
-		
-	}
+public class CEPBusConnector extends AbstractConnector implements CEPBusManagementCI{
 
 	@Override
 	public String getEventReceptionInboundPortURI(String uri) throws Exception {
@@ -60,11 +43,4 @@ public class CEPBusConnector extends AbstractConnector implements CEPBusManageme
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void multiSendEvent(String emitterURI, String[] destinationURIs, EventI e) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

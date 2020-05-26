@@ -10,7 +10,7 @@ import fr.sorbonne_u.components.ports.AbstractInboundPort;
 import fr.sorbonne_u.components.ports.AbstractOutboundPort;
 
 
-public class CEPBusOutboundPort extends AbstractOutboundPort implements CEPBusManagementCI, EventEmissionCI{
+public class CEPBusOutboundPort extends AbstractOutboundPort implements CEPBusManagementCI{
 	
 	/**
 	 * 
@@ -18,11 +18,11 @@ public class CEPBusOutboundPort extends AbstractOutboundPort implements CEPBusMa
 	private static final long serialVersionUID = 1L;
 
 	public CEPBusOutboundPort(ComponentI owner) throws Exception {
-		super(EventEmissionCI.class, owner);
+		super(CEPBusManagementCI.class, owner);
 	}
 
 	public CEPBusOutboundPort(String uri, ComponentI owner) throws Exception {
-		super(uri, EventEmissionCI.class, owner);
+		super(uri, CEPBusManagementCI.class, owner);
 	}
 
 	protected CEPBusOutboundPort(Class<?> implementedInterface, ComponentI owner)
@@ -33,18 +33,6 @@ public class CEPBusOutboundPort extends AbstractOutboundPort implements CEPBusMa
 	protected CEPBusOutboundPort(String uri, Class<?> implementedInterface, ComponentI owner)
 			throws Exception {
 		super(uri, implementedInterface, owner);
-	}
-	
-	
-	@Override
-	public void sendEvent(String emitterURI, String destinationURI, EventI e) throws Exception {
-		((EventEmissionCI) this.connector).sendEvent(emitterURI, destinationURI, e);
-	}
-
-	@Override
-	public void multiSendEvent(String emitterURI, String[] destinationURIs, EventI e) throws Exception {
-		((EventEmissionCI) this.connector).multiSendEvent(emitterURI, destinationURIs, e);
-		
 	}
 	
 

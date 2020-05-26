@@ -2,12 +2,14 @@ package app.components;
 
 import app.components.events.AtomicEvent;
 import app.connectors.CEPBusConnector;
+import app.connectors.EventEmissionConnector;
 import app.interfaces.bus.EventEmissionCI;
 import app.interfaces.components.PresenceDetectorCI;
 import app.interfaces.events.AtomicEventI;
 import app.interfaces.events.EventI;
 import app.ports.CEPBusInboundPort;
 import app.ports.CEPBusOutboundPort;
+import app.ports.EventEmissionOutboundPort;
 import app.ports.PresenceDetectorInboundPort;
 import app.ports.PresenceDetectorOutboundPort;
 import fr.sorbonne_u.components.AbstractComponent;
@@ -55,7 +57,7 @@ public class PresenceDetector extends AbstractComponent  {
 	
 	public static final String CORR_URI = "pdURI";
 	
-	protected CEPBusOutboundPort buso;
+	protected EventEmissionOutboundPort eeobp;
 	protected PresenceDetectorInboundPort pdi;
 	
 	private static int count = 0;
@@ -72,9 +74,9 @@ public class PresenceDetector extends AbstractComponent  {
 	
 	protected void initialise() throws Exception {
 		this.pdi = this.createPort();
-		this.pdi.publishPort();
-		this.buso = new CEPBusOutboundPort(this);
-		this.buso.publishPort();
+		//this.pdi.publishPort();
+		this.eeobp = new EventEmissionOutboundPort(this);
+		//this.eeobp.publishPort();
 	}
 	
 	protected PresenceDetectorInboundPort createPort() throws Exception {
@@ -86,10 +88,10 @@ public class PresenceDetector extends AbstractComponent  {
 		AtomicEventI event = new AtomicEvent("Detection presence "+count);
 		event.putProperty("room", room);
 		// todo call offredI of bus
-		this.doPortConnection(this.buso.getPortURI(),pdi.getClientPortURI(), CEPBusConnector.class.getCanonicalName());
+		this.doPortConnection(this.eeobp.getPortURI(),pdi.getClientPortURI(), EventEmissionConnector.class.getCanonicalName());
 		System.out.println("juste aprés doPortConnection");
-		buso.sendEvent(INBOUND_PORT_URI, CORR_URI, event);
-		this.doPortDisconnection(this.buso.getClientPortURI());
+		eeobp.sendEvent(INBOUND_PORT_URI, CORR_URI, event);
+		this.doPortDisconnection(this.eeobp.getClientPortURI());
 	}
 	
 	@Override
@@ -108,8 +110,8 @@ public class PresenceDetector extends AbstractComponent  {
 	@Override
 	public void shutdown() throws ComponentShutdownException {
 		try {
-			this.pdi.unpublishPort();
-			this.buso.unpublishPort();
+			//this.pdi.unpublishPort();
+			//this.eeobp.unpublishPort();
 		} catch (Exception e) {
 			throw new ComponentShutdownException(e);
 		}

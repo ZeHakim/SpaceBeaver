@@ -8,5 +8,4 @@ public interface ExecutorCI extends OfferedI, RequiredI {
 	
 	public void execute(ExecutorCommandI command) throws Exception ;
 
-	public void execute(ExecutorCommandI command);
 }
