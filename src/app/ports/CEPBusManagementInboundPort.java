@@ -38,7 +38,7 @@ public class CEPBusManagementInboundPort extends AbstractInboundPort implements 
 	}
 
 	@Override
-	public String getExecutorInboundPortURI(String excutorURI) throws Exception {
+	public String getExecutorInboundPortURI(String executorURI) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
