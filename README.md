@@ -1,4 +1,4 @@
 # SpaceBeaver
 Projet BCM4Java, cours de CPS
 
-test eclipse hakim 
+Detecteur d'intrusions, sur le modèle composants
