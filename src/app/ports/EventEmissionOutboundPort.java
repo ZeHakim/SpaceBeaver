@@ -1,26 +1,59 @@
-package org.diehl.ports;
+package app.ports;
 
+import app.interfaces.bus.CEPBusManagementCI;
+import app.interfaces.bus.EventEmissionCI;
+import app.interfaces.events.EventI;
 import fr.sorbonne_u.components.ComponentI;
 import fr.sorbonne_u.components.ports.AbstractOutboundPort;
-import org.diehl.domain.events.EventI;
-import org.diehl.interfaces.EventEmissionCI;
 
+public class EventEmissionOutboundPort extends AbstractOutboundPort implements EventEmissionCI{
+	
+	
+	private static final long serialVersionUID = 1L;
 
-public class EventEmissionOutboundPort extends AbstractOutboundPort implements EventEmissionCI {
+	public EventEmissionOutboundPort(ComponentI owner) throws Exception {
+		super(EventEmissionCI.class, owner);
+	}
 
-    private static final long serialVersionUID = 1L;
+	public EventEmissionOutboundPort(String uri, ComponentI owner) throws Exception {
+		super(uri, EventEmissionCI.class, owner);
+	}
 
+	protected EventEmissionOutboundPort(Class<?> implementedInterface, ComponentI owner)
+			throws Exception {
+		super(implementedInterface, owner);
+	}
 
-    public EventEmissionOutboundPort(String uri, ComponentI owner) throws Exception {
-        super(uri, EventEmissionCI.class, owner);
-    }
+	protected EventEmissionOutboundPort(String uri, Class<?> implementedInterface, ComponentI owner)
+			throws Exception {
+		super(uri, implementedInterface, owner);
+	}
+	
+	/**
+	 * Methode qui permet l'envoie d'vent a des destinations
+	 * @param emitterURI
+	 * @param destinationURI
+	 * @throws Exception	<i>to do</i>.
+	 * @author hakim
+	 *
+	 */
+	@Override
+	public void sendEvent(String emitterURI, String destinationURI, EventI e) throws Exception {
+		System.out.println("je suis dans le port sortant !!!!!");
+		((EventEmissionCI) this.connector).sendEvent(emitterURI, destinationURI, e);
+	}
 
-    public EventEmissionOutboundPort(ComponentI owner) throws Exception {
-        super(EventEmissionCI.class, owner);
-    }
+	/**
+	 * Methode qui permet l'envoie d'vent a des destinations
+	 * @param emitterURI
+	 * @param destinationURIs
+	 * @throws Exception	<i>to do</i>.
+	 * @author hakim
+	 */
+	@Override
+	public void multiSendEvent(String emitterURI, String[] destinationURIs, EventI e) throws Exception {
+		((EventEmissionCI) this.connector).multiSendEvent(emitterURI, destinationURIs, e);
+		
+	}
 
-    @Override
-    public void sendEvent(String emitterURI, String destinationURI, EventI e) throws Exception {
-        ((EventEmissionCI) this.connector).sendEvent(emitterURI, destinationURI, e);
-    }
 }

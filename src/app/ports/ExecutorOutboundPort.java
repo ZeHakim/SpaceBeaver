@@ -1,9 +1,9 @@
-package org.diehl.ports;
+package app.ports;
 
+import app.interfaces.bus.ExecutorCI;
+import app.interfaces.commands.ExecutorCommandI;
 import fr.sorbonne_u.components.ComponentI;
 import fr.sorbonne_u.components.ports.AbstractOutboundPort;
-import org.diehl.interfaces.ExecutorCI;
-import org.diehl.components.ExecutorCommandI;
 
 public class ExecutorOutboundPort extends AbstractOutboundPort implements ExecutorCI {
 
@@ -15,8 +15,15 @@ public class ExecutorOutboundPort extends AbstractOutboundPort implements Execut
     }
 
 
-    @Override
-    public void executeCommand(ExecutorCommandI command) throws Exception {
-        ((ExecutorCI) this.connector).executeCommand(command);
-    }
+//    @Override
+//    public void executeCommand(ExecutorCommandI command) throws Exception {
+//        ((ExecutorCI) this.connector).executeCommand(command);
+//    }
+
+
+	@Override
+	public void execute(ExecutorCommandI command) throws Exception {
+		((ExecutorCI) this.connector).execute(command);
+		
+	}
 }

@@ -1,10 +1,10 @@
-package org.diehl.ports;
+package app.ports;
 
+import app.interfaces.bus.ExecutorCI;
+import app.interfaces.commands.ExecutorCommandI;
 import fr.sorbonne_u.components.ComponentI;
 import fr.sorbonne_u.components.ports.AbstractInboundPort;
-import org.diehl.components.ExecutorCommandI;
-import org.diehl.components.ThermostatCommand;
-import org.diehl.interfaces.ExecutorCI;
+
 
 public class ExecutorInboundPort extends AbstractInboundPort implements ExecutorCI {
 
@@ -14,9 +14,15 @@ public class ExecutorInboundPort extends AbstractInboundPort implements Executor
         super(uri, ExecutorCI.class, owner);
     }
 
-    @Override
-    public void executeCommand(ExecutorCommandI command) throws Exception {
-        this.getOwner().handleRequestSync(
-                o -> ((ThermostatCommand) o).executeCommand(command));
-    }
+//    @Override
+//    public void executeCommand(ExecutorCommandI command) throws Exception {
+//        this.getOwner().handleRequestSync(
+//                o -> ((ThermostatCommand) o).executeCommand(command));
+//    }
+
+	@Override
+	public void execute(ExecutorCommandI command) throws Exception {
+		//this.getOwner().handleRequestSync(o -> ((ThermostatCommand) o).executeCommand(command));
+		
+	}
 }

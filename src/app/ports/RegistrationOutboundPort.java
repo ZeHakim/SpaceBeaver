@@ -1,9 +1,10 @@
-package org.diehl.ports;
+package app.ports;
 
+import app.interfaces.bus.CEPBusManagementCI;
+import app.interfaces.bus.EventEmissionCI;
 import fr.sorbonne_u.components.ComponentI;
 import fr.sorbonne_u.components.ports.AbstractOutboundPort;
-import org.diehl.interfaces.CEPBusManagementCI;
-import org.diehl.interfaces.EventEmissionCI;
+
 
 
 public class RegistrationOutboundPort extends AbstractOutboundPort implements CEPBusManagementCI {
@@ -27,4 +28,28 @@ public class RegistrationOutboundPort extends AbstractOutboundPort implements CE
     public void registerCommandExecutor(String uri, String inboundPortURI) throws Exception {
         ((CEPBusManagementCI) this.connector).registerCommandExecutor(uri, inboundPortURI);
     }
+
+	@Override
+	public String getEventReceptionInboundPortURI(String uri) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void unregisterEventReceptor(String uri) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getExecutorInboundPortURI(String excutorURI) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void unregisterCommandExecutor(String uri) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
 }

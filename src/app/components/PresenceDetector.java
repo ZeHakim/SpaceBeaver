@@ -7,8 +7,8 @@ import app.interfaces.bus.EventEmissionCI;
 import app.interfaces.components.PresenceDetectorCI;
 import app.interfaces.events.AtomicEventI;
 import app.interfaces.events.EventI;
-import app.ports.CEPBusInboundPort;
-import app.ports.CEPBusOutboundPort;
+import app.ports.CEPBusManagementInboundPort;
+import app.ports.CEPBusManagementOutboundPort;
 import app.ports.EventEmissionOutboundPort;
 import app.ports.PresenceDetectorInboundPort;
 import app.ports.PresenceDetectorOutboundPort;
@@ -49,8 +49,7 @@ import fr.sorbonne_u.components.exceptions.ComponentShutdownException;
 * 
 * @author 
 */
-@OfferedInterfaces(offered = { PresenceDetectorCI.class,  })
-@RequiredInterfaces(required = { PresenceDetectorCI.class, EventEmissionCI.class })
+@RequiredInterfaces(required = {  EventEmissionCI.class })
 public class PresenceDetector extends AbstractComponent  {
 	
 	public static final String INBOUND_PORT_URI = "pdURI";
@@ -58,7 +57,7 @@ public class PresenceDetector extends AbstractComponent  {
 	public static final String CORR_URI = "pdURI";
 	
 	protected EventEmissionOutboundPort eeobp;
-	protected PresenceDetectorInboundPort pdi;
+//	protected PresenceDetectorInboundPort pdi;
 	
 	private static int count = 0;
 	private static final String room = "15";
@@ -73,24 +72,26 @@ public class PresenceDetector extends AbstractComponent  {
 	}
 	
 	protected void initialise() throws Exception {
-		this.pdi = this.createPort();
-		//this.pdi.publishPort();
+//		this.pdi = this.createPort();
+//		this.pdi.publishPort();
 		this.eeobp = new EventEmissionOutboundPort(this);
-		//this.eeobp.publishPort();
+		this.eeobp.publishPort();
 	}
 	
-	protected PresenceDetectorInboundPort createPort() throws Exception {
-		return new PresenceDetectorInboundPort(INBOUND_PORT_URI, this);
-	}
+//	protected PresenceDetectorInboundPort createPort() throws Exception {
+//		return new PresenceDetectorInboundPort(INBOUND_PORT_URI, this);
+//	}
 	
 	public void emitEventDetector() throws Exception { 
 		count++;
 		AtomicEventI event = new AtomicEvent("Detection presence "+count);
 		event.putProperty("room", room);
 		// todo call offredI of bus
-		this.doPortConnection(this.eeobp.getPortURI(),pdi.getClientPortURI(), EventEmissionConnector.class.getCanonicalName());
+		this.doPortConnection(this.eeobp.getPortURI(),CEPBus.INBOUND_PORT_URI, EventEmissionConnector.class.getCanonicalName());
 		System.out.println("juste aprés doPortConnection");
+		System.out.println("juste avant le sendEvent");
 		eeobp.sendEvent(INBOUND_PORT_URI, CORR_URI, event);
+		System.out.println("juste après le sendEvent");
 		this.doPortDisconnection(this.eeobp.getClientPortURI());
 	}
 	
@@ -110,8 +111,8 @@ public class PresenceDetector extends AbstractComponent  {
 	@Override
 	public void shutdown() throws ComponentShutdownException {
 		try {
-			//this.pdi.unpublishPort();
-			//this.eeobp.unpublishPort();
+//			this.pdi.unpublishPort();
+			this.eeobp.unpublishPort();
 		} catch (Exception e) {
 			throw new ComponentShutdownException(e);
 		}
