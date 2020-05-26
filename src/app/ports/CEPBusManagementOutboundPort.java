@@ -10,6 +10,7 @@ import app.interfaces.bus.EventEmissionCI;
 import app.interfaces.bus.EventReceptionCI;
 import app.interfaces.events.EventI;
 
+// TODO vérifier si cette class sert à qq chose
 public class CEPBusManagementOutboundPort extends AbstractOutboundPort implements CEPBusManagementCI {
 	private static final long serialVersionUID = 1L;
 

@@ -13,7 +13,7 @@ public class CEPBusManagementInboundPort extends AbstractInboundPort implements 
 
 	public CEPBusManagementInboundPort(ComponentI owner) throws Exception {
 		super(CEPBusManagementCI.class, owner);
-		assert owner instanceof CEPBus;
+		assert owner instanceof CEPBus; // TODO ne faudrait-il pas faire le assert avant le super ?
 	}
 
 	public CEPBusManagementInboundPort(String uri, ComponentI owner) throws Exception {
@@ -38,9 +38,20 @@ public class CEPBusManagementInboundPort extends AbstractInboundPort implements 
 	}
 
 	@Override
-	public void registerEventReceptor(String uri, String inboundPortURI) throws Exception {
+	public String getExecutorInboundPortURI(String excutorURI) throws Exception {
 		// TODO Auto-generated method stub
+		return null;
 	}
+
+	@Override
+	public void registerEventReceptor(String uri, String inboundPortURI) throws Exception {
+        // TODO a vérifier pour voir si on peut simplifier le cast
+        this.getOwner().handleRequestSync(
+            o -> (
+                (CEPBus) o
+            ).registerEventReceptor(uri, inboundPortURI)
+        );
+    }
 
 	@Override
 	public void unregisterEventReceptor(String uri) throws Exception {
@@ -49,13 +60,11 @@ public class CEPBusManagementInboundPort extends AbstractInboundPort implements 
 
 	@Override
 	public void registerCommandExecutor(String uri, String inboundPortURI) throws Exception {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public String getExecutorInboundPortURI(String excutorURI) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+        this.getOwner().handleRequestSync(
+            o -> (
+                (CEPBus) o
+            ).registerCommandExecutor(uri, inboundPortURI)
+        );
 	}
 
 	@Override
