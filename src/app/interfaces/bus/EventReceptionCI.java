@@ -1,13 +1,12 @@
 package app.interfaces.bus;
 
-import app.interfaces.events.EventI;
 import fr.sorbonne_u.components.interfaces.OfferedI;
+import app.interfaces.events.EventI;
 
 public interface EventReceptionCI extends OfferedI {
 
-	
 	/**
-	 * Methode qui permet la reception d'vent 
+	 * Methode qui permet la reception d'un event
 	 * @param uri
 	 * @param e
 	 * @throws Exception	<i>to do</i>.
