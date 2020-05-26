@@ -9,7 +9,7 @@ import app.interfaces.bus.EventEmissionCI;
 import app.interfaces.bus.EventReceptionCI;
 import app.interfaces.components.EventReceptionI;
 import app.interfaces.events.EventI;
-import app.ports.CEPBusManagmentInboundPort;
+import app.ports.CEPBusManagementInboundPort;
 import app.ports.EventReceptionInboundPort;
 import app.ports.PresenceDetectorInboundPort;
 import app.ports.PresenceDetectorOutboundPort;
@@ -24,7 +24,7 @@ import fr.sorbonne_u.components.exceptions.ComponentShutdownException;
 public class CEPBus extends AbstractComponent implements EventEmissionCI{
 	
 	public static final String INBOUND_PORT_URI = "busiURI";
-	protected CEPBusManagmentInboundPort busi;
+	protected CEPBusManagementInboundPort busi;
 	protected EventReceptionInboundPort erbp;
 	
 	protected Map<String, ArrayList<String>> emmeteurCorrelateur;
@@ -55,8 +55,8 @@ public class CEPBus extends AbstractComponent implements EventEmissionCI{
 		System.out.println("eeeeeeee "+erbp.getPortURI());
 	}
 
-	protected CEPBusManagmentInboundPort createPort() throws Exception {
-		return new CEPBusManagmentInboundPort(INBOUND_PORT_URI, this);
+	protected CEPBusManagementInboundPort createPort() throws Exception {
+		return new CEPBusManagementInboundPort(INBOUND_PORT_URI, this);
 	}
 
 	@Override

@@ -54,12 +54,13 @@ public class EventReceptionInboundPort extends AbstractInboundPort implements Ev
 		});
 		
 	}
+	
+//	@Override
+//    public void receiveEvent(String emitterURI, String destinationURI, EventI e) throws Exception {
+//                o -> ((CEPBus) o).receiveEvent(emitterURI, destinationURI, e));
+//        this.getOwner().handleRequestSync(
+//    }
 
 }
 
-    @Override
-    public void receiveEvent(String emitterURI, String destinationURI, EventI e) throws Exception {
-                o -> ((CEPBus) o).receiveEvent(emitterURI, destinationURI, e));
-        this.getOwner().handleRequestSync(
-    }
-}
+    

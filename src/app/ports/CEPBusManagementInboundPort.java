@@ -2,7 +2,6 @@ package app.ports;
 
 import fr.sorbonne_u.components.ComponentI;
 import fr.sorbonne_u.components.ports.AbstractInboundPort;
-
 import app.components.CEPBus;
 import app.interfaces.bus.CEPBusManagementCI;
 import app.interfaces.bus.EventEmissionCI;
@@ -46,11 +45,18 @@ public class CEPBusManagementInboundPort extends AbstractInboundPort implements 
 	@Override
 	public void registerEventReceptor(String uri, String inboundPortURI) throws Exception {
         // TODO a vérifier pour voir si on peut simplifier le cast
-        this.getOwner().handleRequestSync(
-            o -> (
-                (CEPBus) o
-            ).registerEventReceptor(uri, inboundPortURI)
-        );
+//		this.getOwner().handleRequestSync(o -> {
+//			try {
+//				((CEPBus) o).registerEventReceptor(uri, inboundPortURI);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		});
+////        this.getOwner().handleRequestSync(
+////            o -> (
+////                (CEPBus) o
+////            ).registerEventReceptor(uri, inboundPortURI)
+////        );
     }
 
 	@Override
@@ -60,11 +66,11 @@ public class CEPBusManagementInboundPort extends AbstractInboundPort implements 
 
 	@Override
 	public void registerCommandExecutor(String uri, String inboundPortURI) throws Exception {
-        this.getOwner().handleRequestSync(
-            o -> (
-                (CEPBus) o
-            ).registerCommandExecutor(uri, inboundPortURI)
-        );
+//        this.getOwner().handleRequestSync(
+//            o -> (
+//                (CEPBus) o
+//            ).registerCommandExecutor(uri, inboundPortURI)
+//        );
 	}
 
 	@Override

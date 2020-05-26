@@ -1,10 +1,10 @@
-package org.diehl.ports;
+package app.ports;
 
+import app.interfaces.bus.EventReceptionCI;
+import app.interfaces.events.EventI;
 import fr.sorbonne_u.components.ComponentI;
 import fr.sorbonne_u.components.ports.AbstractInboundPort;
-import org.diehl.components.ThermostatCorrelator;
-import org.diehl.domain.events.EventI;
-import org.diehl.interfaces.EventReceptionCI;
+
 
 public class CorrelatorReceptionInboundPort extends AbstractInboundPort implements EventReceptionCI {
 
@@ -15,9 +15,16 @@ public class CorrelatorReceptionInboundPort extends AbstractInboundPort implemen
     }
 
 
-    @Override
-    public void receiveEvent(String emitterURI, String destinationURI, EventI e) throws Exception {
-        this.getOwner().handleRequestSync(
-                o -> ((ThermostatCorrelator) o).receiveEvent(emitterURI, destinationURI, e));
-    }
+//    @Override
+//    public void receiveEvent(String emitterURI, String destinationURI, EventI e) throws Exception {
+//        this.getOwner().handleRequestSync(
+//                o -> ((ThermostatCorrelator) o).receiveEvent(emitterURI, destinationURI, e));
+//    }
+
+
+	@Override
+	public void receiveEvent(String uri, EventI e) throws Exception {
+//		this.getOwner().handleRequestSync(
+//                o -> ((ThermostatCorrelator) o).receiveEvent(emitterURI, destinationURI, e));
+	}
 }
