@@ -1,6 +1,6 @@
 package cep.plug.ports;
 
-import cep.interfaces.bus.EventEmissionCI;
+import cep.interfaces.EventEmissionCI;
 import cep.domain.events.EventI;
 import fr.sorbonne_u.components.ComponentI;
 import fr.sorbonne_u.components.ports.AbstractOutboundPort;
@@ -25,7 +25,7 @@ public class EventEmissionOutboundPort extends AbstractOutboundPort implements E
     }
 
     @Override
-    public void multiSendEvent(String emitterURI, String[] destinationURIs, EventI e) throws Exception {
+    public void multiSendEvent(String emitterURI, String[] destinationURIs, EventI e)  {
 
     }
 }

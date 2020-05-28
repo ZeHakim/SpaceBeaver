@@ -1,7 +1,7 @@
 package cep.plug.ports;
 
 
-import cep.interfaces.bus.CEPBusManagementCI;
+import cep.interfaces.CEPBusManagementCI;
 import cep.plug.components.CEPBus;
 import fr.sorbonne_u.components.ComponentI;
 import fr.sorbonne_u.components.ports.AbstractInboundPort;
@@ -24,7 +24,10 @@ public class CEPBusManagementInboundPort extends AbstractInboundPort implements 
     @Override
     public void registerEventReceptor(String uri, String inboundPortURI) throws Exception {
         this.getOwner().handleRequestSync(
-                o -> ((CEPBus) o).registerEventReceptor(uri, inboundPortURI));
+                o -> {
+                    ((CEPBus) o).registerEventReceptor(uri, inboundPortURI);
+                    return true;
+                });
     }
 
     @Override
@@ -36,7 +39,10 @@ public class CEPBusManagementInboundPort extends AbstractInboundPort implements 
     @Override
     public void registerCommandExecutor(String uri, String inboundPortURI) throws Exception {
         this.getOwner().handleRequestSync(
-                o -> ((CEPBus) o).registerCommandExecutor(uri, inboundPortURI));
+                o -> {
+                    ((CEPBus) o).registerCommandExecutor(uri, inboundPortURI);
+                    return true;
+                });
     }
 
     @Override

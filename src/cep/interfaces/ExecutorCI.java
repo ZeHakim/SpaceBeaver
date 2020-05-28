@@ -1,11 +1,11 @@
-package cep.interfaces.bus;
+package cep.interfaces;
 
-import cep.interfaces.commands.ExecutorCommandI;
+import cep.domain.correlators.ExecutorCommandI;
 import fr.sorbonne_u.components.interfaces.OfferedI;
 import fr.sorbonne_u.components.interfaces.RequiredI;
 
 public interface ExecutorCI extends OfferedI, RequiredI {
-	
-	public void executeCommand(ExecutorCommandI command) throws Exception ;
+
+    void execute(ExecutorCommandI command) throws Exception;
 
 }

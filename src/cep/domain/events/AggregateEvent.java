@@ -24,7 +24,6 @@ public class AggregateEvent implements AggregateEventI {
 	 * Methode qui retourne l'uri d l'event agrégé
 	 * @return uri
 	 * @throws Exception	<i>to do</i>.
-	 * @author Hakim
 	 */
 	@Override
 	public String getURI() {
@@ -35,7 +34,6 @@ public class AggregateEvent implements AggregateEventI {
 	 * Methode qui retourne l'instance de TimeStamp associé à l'event agrége
 	 * @return timeStamp
 	 * @throws Exception	<i>to do</i>.
-	 * @author Hakim
 	 */
 	@Override
 	public TimeStamp getTimeStamp() {
@@ -46,8 +44,7 @@ public class AggregateEvent implements AggregateEventI {
 	 * Methode qui check la property associée à l'event agrége
 	 * @return boolean
 	 * @throws Exception	<i>to do</i>.
-	 * @author Hakim
-	 * @return 
+	 * @return
 	 */
 	@Override
 	public boolean hasProperty(String name) {
@@ -61,7 +58,6 @@ public class AggregateEvent implements AggregateEventI {
 	 * Methode qui retourne la property associée à l'event agrége
 	 * @return property
 	 * @throws Exception	<i>to do</i>.
-	 * @author Hakim
 	 */
 	@Override
 	public Serializable getPropertyValue(String name) {
@@ -75,7 +71,6 @@ public class AggregateEvent implements AggregateEventI {
 	 * Methode qui retourne la liste des events qui composent l'event agrége
 	 * @return correlatedEvent
 	 * @throws Exception	<i>to do</i>.
-	 * @author Hakim
 	 */
 	@Override
 	public ArrayList<EventI> getCorrelatedEvents() {

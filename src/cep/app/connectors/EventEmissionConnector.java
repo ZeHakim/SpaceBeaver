@@ -1,6 +1,6 @@
 package cep.app.connectors;
 
-import cep.interfaces.bus.EventEmissionCI;
+import cep.interfaces.EventEmissionCI;
 import cep.domain.events.EventI;
 import cep.app.ports.EventReceptionInboundPort;
 import fr.sorbonne_u.components.connectors.AbstractConnector;

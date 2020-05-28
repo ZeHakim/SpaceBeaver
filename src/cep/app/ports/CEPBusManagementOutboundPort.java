@@ -3,7 +3,7 @@ package cep.app.ports;
 import fr.sorbonne_u.components.ComponentI;
 import fr.sorbonne_u.components.ports.AbstractOutboundPort;
 
-import cep.interfaces.bus.CEPBusManagementCI;
+import cep.interfaces.CEPBusManagementCI;
 
 // TODO vérifier si cette class sert à qq chose
 public class CEPBusManagementOutboundPort extends AbstractOutboundPort implements CEPBusManagementCI {

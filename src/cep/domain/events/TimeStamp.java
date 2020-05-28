@@ -27,7 +27,6 @@ public class TimeStamp implements Comparable<Object>, Serializable{
 	 * Methode qui renvoie le temps local
 	 * @return localTime
 	 * @throws Exception	<i>to do</i>.
-	 * @author Hakim
 	 */
 	public LocalTime getTime() {
 		return locaTime;

@@ -2,14 +2,11 @@ package cep.domain.correlators;
 
 
 import cep.domain.actuators.BuildingAlarm;
-import cep.domain.events.EventBase;
 import cep.domain.events.EventI;
 
 import java.util.ArrayList;
 
-public class IntrusionRule implements RuleI {
-
-    private EventBase eventBase;
+public class IntrusionRule extends AbstractRule {
 
     public IntrusionRule() {
     }
@@ -20,22 +17,6 @@ public class IntrusionRule implements RuleI {
     public static final EventMatcherI MATCHER_PRESENCE_DETECTION =
             (e -> e.getPropertyValue("type").
                     equals("presence detection"));
-
-    @Override
-    public RuleI clone() {
-        return null;
-    }
-
-
-    @Override
-    public EventI match(EventMatcherI matcher) {
-        return this.eventBase.getEvents().stream().filter(matcher::match).findFirst().orElse(null);
-    }
-
-    @Override
-    public void init() {
-
-    }
 
     @Override
     public ArrayList<EventI> trigger() {
@@ -62,20 +43,5 @@ public class IntrusionRule implements RuleI {
         alarm.execute();
     }
 
-    @Override
-    public void effects(ArrayList<EventI> triggeringEvents) {
-        this.eventBase.removeEvent(triggeringEvents.get(0));
-        this.eventBase.removeEvent(triggeringEvents.get(1));
-    }
-
-    @Override
-    public boolean executeOn(EventBase events) {
-        ArrayList<EventI> eventIS = this.trigger();
-        if (eventIS != null) {
-            this.actions(eventIS);
-            this.effects(eventIS);
-        }
-        return true;
-    }
 }
 

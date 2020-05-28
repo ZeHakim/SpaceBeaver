@@ -1,7 +1,7 @@
 package cep.plug.ports;
 
-import cep.interfaces.bus.CEPBusManagementCI;
-import cep.interfaces.bus.EventEmissionCI;
+import cep.interfaces.CEPBusManagementCI;
+import cep.interfaces.EventEmissionCI;
 import fr.sorbonne_u.components.ComponentI;
 import fr.sorbonne_u.components.ports.AbstractOutboundPort;
 

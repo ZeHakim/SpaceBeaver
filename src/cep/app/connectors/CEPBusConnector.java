@@ -1,6 +1,6 @@
 package cep.app.connectors;
 
-import cep.interfaces.bus.CEPBusManagementCI;
+import cep.interfaces.CEPBusManagementCI;
 import fr.sorbonne_u.components.connectors.AbstractConnector;
 
 public class CEPBusConnector extends AbstractConnector implements CEPBusManagementCI{

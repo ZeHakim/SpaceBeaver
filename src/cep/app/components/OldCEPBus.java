@@ -1,8 +1,8 @@
 package cep.app.components;
 
-import cep.interfaces.bus.CEPBusManagementCI;
-import cep.interfaces.bus.EventEmissionCI;
-import cep.interfaces.bus.EventReceptionCI;
+import cep.interfaces.CEPBusManagementCI;
+import cep.interfaces.EventEmissionCI;
+import cep.interfaces.EventReceptionCI;
 import cep.domain.events.EventI;
 import cep.app.ports.CEPBusManagementInboundPort;
 import cep.app.ports.EventReceptionInboundPort;

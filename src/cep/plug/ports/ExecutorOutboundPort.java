@@ -1,7 +1,7 @@
 package cep.plug.ports;
 
-import cep.interfaces.bus.ExecutorCI;
-import cep.interfaces.commands.ExecutorCommandI;
+import cep.interfaces.ExecutorCI;
+import cep.domain.correlators.ExecutorCommandI;
 import fr.sorbonne_u.components.ComponentI;
 import fr.sorbonne_u.components.ports.AbstractOutboundPort;
 
@@ -16,7 +16,7 @@ public class ExecutorOutboundPort extends AbstractOutboundPort implements Execut
 
 
     @Override
-    public void executeCommand(ExecutorCommandI command) throws Exception {
-        ((ExecutorCI) this.connector).executeCommand(command);
+    public void execute(ExecutorCommandI command) throws Exception {
+        ((ExecutorCI) this.connector).execute(command);
     }
 }

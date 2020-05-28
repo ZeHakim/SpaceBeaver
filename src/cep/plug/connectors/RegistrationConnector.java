@@ -1,22 +1,10 @@
-package cep.plug.connector;
+package cep.plug.connectors;
 
-import cep.interfaces.bus.CEPBusManagementCI;
-import cep.interfaces.bus.EventEmissionCI;
-import cep.interfaces.bus.EventReceptionCI;
-import cep.domain.events.EventI;
+import cep.interfaces.CEPBusManagementCI;
 import fr.sorbonne_u.components.connectors.AbstractConnector;
 
-public class EventConnector extends AbstractConnector implements EventEmissionCI, CEPBusManagementCI {
+public class RegistrationConnector extends AbstractConnector implements CEPBusManagementCI {
 
-    @Override
-    public void sendEvent(String emitterURI, String destinationURI, EventI e) throws Exception {
-        ((EventReceptionCI) this.offering).receiveEvent(emitterURI, e);
-    }
-
-    @Override
-    public void multiSendEvent(String emitterURI, String[] destinationURIs, EventI e) throws Exception {
-
-    }
 
     @Override
     public String getEventReceptionInboundPortURI(String uri) throws Exception {

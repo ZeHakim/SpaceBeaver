@@ -1,12 +1,12 @@
 package cep.plug.ports;
 
-import cep.interfaces.bus.ExecutorCI;
-import cep.interfaces.commands.ExecutorCommandI;
+import cep.domain.correlators.ExecutorCommandI;
+import cep.interfaces.ExecutorCI;
+import cep.plug.components.CommandExecutor;
 import fr.sorbonne_u.components.ComponentI;
 import fr.sorbonne_u.components.ports.AbstractInboundPort;
-import cep.plug.components.ThermostatCommand;
 
-public class ExecutorInboundPort extends AbstractInboundPort implements ExecutorCI {
+public class ExecutorInboundPort<P extends CommandExecutor> extends AbstractInboundPort implements ExecutorCI {
 
     private static final long serialVersionUID = 1L;
 
@@ -15,8 +15,11 @@ public class ExecutorInboundPort extends AbstractInboundPort implements Executor
     }
 
     @Override
-    public void executeCommand(ExecutorCommandI command) throws Exception {
+    public void execute(ExecutorCommandI command) throws Exception {
         this.getOwner().handleRequestSync(
-                o -> ((ThermostatCommand) o).executeCommand(command));
+                o -> {
+                    ((P) o).executeCommand(command);
+                    return true;
+                });
     }
 }

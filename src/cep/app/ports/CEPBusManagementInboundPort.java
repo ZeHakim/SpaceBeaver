@@ -4,7 +4,7 @@ import fr.sorbonne_u.components.ComponentI;
 import fr.sorbonne_u.components.ports.AbstractInboundPort;
 
 import cep.app.components.OldCEPBus;
-import cep.interfaces.bus.CEPBusManagementCI;
+import cep.interfaces.CEPBusManagementCI;
 
 public class CEPBusManagementInboundPort extends AbstractInboundPort implements CEPBusManagementCI {
 	private static final long serialVersionUID = 1L;

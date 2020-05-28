@@ -2,7 +2,7 @@ package cep.app.components;
 
 import cep.domain.events.AtomicEvent;
 import cep.app.connectors.EventEmissionConnector;
-import cep.interfaces.bus.EventEmissionCI;
+import cep.interfaces.EventEmissionCI;
 import cep.interfaces.components.PresenceDetectorCI;
 import cep.domain.events.AtomicEventI;
 import cep.app.ports.EventEmissionOutboundPort;

@@ -2,12 +2,13 @@ package cep;
 
 import cep.app.components.OldCEPBus;
 import cep.app.components.PresenceDetector;
+import cep.plug.connectors.ExecutorConnector;
+import cep.plug.connectors.RegistrationConnector;
 import fr.sorbonne_u.components.AbstractComponent;
 import fr.sorbonne_u.components.cvm.AbstractCVM;
 import cep.plug.components.Thermostat;
-import cep.plug.components.ThermostatCommand;
 import cep.plug.components.ThermostatCorrelator;
-import cep.plug.connector.EventConnector;
+import cep.plug.connectors.EventConnector;
 
 
 public class CVM extends AbstractCVM {
@@ -16,16 +17,13 @@ public class CVM extends AbstractCVM {
 	public static final String BUS_EVENT_RECEPTION_IN = "busEventReception";
 	public static final String BUS_SEND_OUT = "BusSendEvent";
 
-	public static final String CORRELATOR_REGISTRATION_OUT = "correlatorRegistration";
-	public static final String CORRELATOR_EVENT_RECEPTION_IN = "correlatorEventReception";
-	public static final String CORRELATOR_COMMAND_OUT = "CorrelatorSendEvent";
+	public static final String THERMOSTAT_CORRELATOR_REGISTRATION_OUT = "correlatorRegistration";
+	public static final String THERMOSTAT_CORRELATOR_EVENT_RECEPTION_IN = "correlatorEventReception";
+	public static final String THERMOSTAT_CORRELATOR_COMMAND_OUT = "CorrelatorSendEvent";
 
 
-	public static final String THERMOSTAT_SEND_REG_OUT = "ThermostatSendEventRegistration";
-	public static final String THERMOSTAT_SEND_OUT = "ThermostatSendEvent";
-
-	public static final String THERMOSTAT_COMMAND_REG_OUT = "ThermostatCommandRegistration";
-	public static final String THERMOSTAT_COMMAND_OUT = "ThermostatCommandExecuteOut";
+	public static final String THERMOSTAT_REGISTRATION_OUT = "ThermostatSendEventRegistration";
+	public static final String THERMOSTAT_SENDER_OUT = "ThermostatSendEvent";
 	public static final String THERMOSTAT_COMMAND_IN = "ThermostatCommandExecuteIn";
 
 	public CVM() throws Exception {
@@ -44,38 +42,34 @@ public class CVM extends AbstractCVM {
 				cep.plug.components.CEPBus.class.getCanonicalName(),
 				new Object[]{BUS_REGISTRATION_IN, BUS_EVENT_RECEPTION_IN, BUS_SEND_OUT});
 
-		//ThermostatCommand creation
-		String uri2 = AbstractComponent.createComponent(
-				ThermostatCommand.class.getCanonicalName(),
-				new Object[]{THERMOSTAT_COMMAND_IN, THERMOSTAT_COMMAND_REG_OUT});
-
-		//ThermostatSendEvent creation
-		String uri = AbstractComponent.createComponent(
+		//Thermostat creation
+		String uri1 = AbstractComponent.createComponent(
 				Thermostat.class.getCanonicalName(),
-				new Object[]{THERMOSTAT_SEND_OUT, THERMOSTAT_SEND_REG_OUT});
+				new Object[]{THERMOSTAT_SENDER_OUT, THERMOSTAT_REGISTRATION_OUT, THERMOSTAT_COMMAND_IN});
 
 		//ThermostatCorrelator creation
-		String uri3 = AbstractComponent.createComponent(
+		String uri2 = AbstractComponent.createComponent(
 				ThermostatCorrelator.class.getCanonicalName(),
-				new Object[]{CORRELATOR_EVENT_RECEPTION_IN, CORRELATOR_COMMAND_OUT, CORRELATOR_REGISTRATION_OUT});
+				new Object[]{THERMOSTAT_CORRELATOR_EVENT_RECEPTION_IN, THERMOSTAT_CORRELATOR_COMMAND_OUT, THERMOSTAT_CORRELATOR_REGISTRATION_OUT});
 
-		//ThermostatCommand registration
-		this.doPortConnection(uri2, THERMOSTAT_COMMAND_REG_OUT, BUS_REGISTRATION_IN,
-				EventConnector.class.getCanonicalName());
 		//ThermostatSendEvent registration
-		this.doPortConnection(uri, THERMOSTAT_SEND_REG_OUT, BUS_REGISTRATION_IN,
-				EventConnector.class.getCanonicalName());
+		this.doPortConnection(uri1, THERMOSTAT_REGISTRATION_OUT, BUS_REGISTRATION_IN,
+				RegistrationConnector.class.getCanonicalName());
 		//ThermostatCorrelator registration
-		this.doPortConnection(uri3, CORRELATOR_REGISTRATION_OUT, BUS_REGISTRATION_IN,
-				EventConnector.class.getCanonicalName());
+		this.doPortConnection(uri2, THERMOSTAT_CORRELATOR_REGISTRATION_OUT, BUS_REGISTRATION_IN,
+				RegistrationConnector.class.getCanonicalName());
 
 		//ThermostatSendEvent
-		this.doPortConnection(uri, THERMOSTAT_SEND_OUT, BUS_EVENT_RECEPTION_IN,
+		this.doPortConnection(uri1, THERMOSTAT_SENDER_OUT, BUS_EVENT_RECEPTION_IN,
 				EventConnector.class.getCanonicalName());
 
 		//BusSendEvent
-		this.doPortConnection(busUri, BUS_SEND_OUT, CORRELATOR_EVENT_RECEPTION_IN,
+		this.doPortConnection(busUri, BUS_SEND_OUT, THERMOSTAT_CORRELATOR_EVENT_RECEPTION_IN,
 				EventConnector.class.getCanonicalName());
+
+		//ThermostatCommand
+		this.doPortConnection(uri2, THERMOSTAT_CORRELATOR_COMMAND_OUT, THERMOSTAT_COMMAND_IN,
+				ExecutorConnector.class.getCanonicalName());
 
 		//////////////////////////////
 		//Composants
@@ -88,7 +82,7 @@ public class CVM extends AbstractCVM {
 		try {
 			CVM cvm = new CVM();
 			cvm.startStandardLifeCycle(1000L);
-			Thread.sleep(10000L);
+			Thread.sleep(2000L);
 			System.exit(0);
 		} catch (Exception e) {
 			throw new RuntimeException(e);

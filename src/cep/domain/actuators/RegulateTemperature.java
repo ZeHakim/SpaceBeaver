@@ -1,11 +1,11 @@
 package cep.domain.actuators;
 
-public class TemperatureCommand {
+public class RegulateTemperature {
 
     private Double ambient;
     private Double target;
 
-    public TemperatureCommand(Double ambient, Double target) {
+    public RegulateTemperature(Double ambient, Double target) {
         this.ambient = ambient;
         this.target = target;
     }

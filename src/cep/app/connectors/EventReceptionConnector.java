@@ -1,7 +1,7 @@
 package cep.app.connectors;
 
 import cep.app.components.OldCEPBus;
-import cep.interfaces.bus.EventReceptionCI;
+import cep.interfaces.EventReceptionCI;
 import cep.domain.events.EventI;
 import fr.sorbonne_u.components.connectors.AbstractConnector;
 

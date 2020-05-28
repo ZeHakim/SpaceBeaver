@@ -32,7 +32,6 @@ public class AtomicEvent implements AtomicEventI{
 	 * Methode qui retourne l'uri d l'event
 	 * @return uri
 	 * @throws Exception	<i>to do</i>.
-	 * @author Hakim
 	 */
 	@Override
 	public String getURI() {
@@ -43,7 +42,6 @@ public class AtomicEvent implements AtomicEventI{
 	 * Methode qui retourne l'instance de TimeStamp associé à l'event
 	 * @return timeStamp
 	 * @throws Exception	<i>to do</i>.
-	 * @author Hakim
 	 */
 	@Override
 	public TimeStamp getTimeStamp() {
@@ -54,7 +52,6 @@ public class AtomicEvent implements AtomicEventI{
 	 * Methode qui check si l'event posséd une property
 	 * @return boolean
 	 * @throws Exception	<i>to do</i>.
-	 * @author Hakim
 	 */
 	@Override
 	public boolean hasProperty(String name) {

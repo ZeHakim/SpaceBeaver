@@ -1,28 +1,28 @@
 package cep.plug.components;
 
 import cep.CVM;
-import cep.domain.events.EventBase;
 import cep.domain.correlators.TemperatureRegulationRule;
-import cep.interfaces.bus.CEPBusManagementCI;
-import cep.interfaces.bus.EventReceptionCI;
-import cep.interfaces.bus.ExecutorCI;
+import cep.domain.events.EventBase;
 import cep.domain.events.EventI;
+import cep.interfaces.CEPBusManagementCI;
+import cep.interfaces.EventReceptionCI;
+import cep.interfaces.ExecutorCI;
+import cep.plug.ports.EventReceptionInboundPort;
+import cep.plug.ports.ExecutorOutboundPort;
+import cep.plug.ports.RegistrationOutboundPort;
 import fr.sorbonne_u.components.AbstractComponent;
 import fr.sorbonne_u.components.annotations.OfferedInterfaces;
 import fr.sorbonne_u.components.annotations.RequiredInterfaces;
 import fr.sorbonne_u.components.exceptions.ComponentShutdownException;
-import cep.plug.ports.CorrelatorReceptionInboundPort;
-import cep.plug.ports.ExecutorOutboundPort;
-import cep.plug.ports.RegistrationOutboundPort;
 
 import java.util.UUID;
 
 @RequiredInterfaces(required = {ExecutorCI.class, CEPBusManagementCI.class})
 @OfferedInterfaces(offered = {EventReceptionCI.class})
-public class ThermostatCorrelator extends AbstractComponent {
+public class ThermostatCorrelator extends AbstractComponent implements EventReceptor {
 
     protected String URI;
-    protected CorrelatorReceptionInboundPort brip;
+    protected EventReceptionInboundPort<ThermostatCorrelator> erip;
     protected ExecutorOutboundPort exop;
     protected RegistrationOutboundPort reop;
     protected EventBase eventBase;
@@ -31,26 +31,26 @@ public class ThermostatCorrelator extends AbstractComponent {
         super(1, 0);
         this.URI = "ThermostatCorrelator-" + UUID.randomUUID().toString();
         this.eventBase = new EventBase();
-        this.brip = new CorrelatorReceptionInboundPort(uri1, this);
+        this.erip = new EventReceptionInboundPort<ThermostatCorrelator>(uri1, this);
         this.exop = new ExecutorOutboundPort(uri2, this);
         this.reop = new RegistrationOutboundPort(uri3, this);
-        this.brip.publishPort();
+        this.erip.publishPort();
         this.exop.publishPort();
         this.reop.publishPort();
     }
 
-    public EventI receiveEvent(String emitterURI, EventI e) {
+
+    @Override
+    public void saveEvent(String emitterURI, EventI e) throws Exception {
         eventBase.addEvent(e);
         assert eventBase.appearsIn(e);
-        System.out.println("ThermostatCorrelator receiveEvent from=" + emitterURI + " to=" + emitterURI + ", event=" + e.getURI());
-        return e;
+        System.out.println("ThermostatCorrelator receiveEvent from=" + emitterURI + ", event=" + e.getURI());
+        this.exop.execute(new TemperatureRegulationRule(eventBase));
     }
 
     @Override
     public void execute() throws Exception {
-        this.reop.registerEventReceptor(this.URI, CVM.BUS_REGISTRATION_IN);
-        this.exop.executeCommand(new TemperatureRegulationRule(eventBase));
-        eventBase.clear();
+        this.reop.registerEventReceptor(this.URI, CVM.THERMOSTAT_CORRELATOR_EVENT_RECEPTION_IN);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class ThermostatCorrelator extends AbstractComponent {
     @Override
     public void shutdown() throws ComponentShutdownException {
         try {
-            this.brip.unpublishPort();
+            this.erip.unpublishPort();
             this.exop.unpublishPort();
             this.reop.unpublishPort();
         } catch (Exception e) {
